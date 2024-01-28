@@ -1,0 +1,20 @@
+header {
+    position: relative;
+}
+
+header .header-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+header .header-wrapper .logo {
+    display: block;
+    padding-top: 26px;
+}
+
+header .header-wrapper .logo svg {
+    width: 246px;
+    height: auto;
+}

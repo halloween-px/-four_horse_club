@@ -1,0 +1,5 @@
+.text-line {
+    background: url("/resources/text-line-hero.svg") center repeat;
+    background-size: contain;
+    height: 60px;
+}

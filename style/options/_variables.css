@@ -1,0 +1,29 @@
+:root {
+  /*FONTS*/
+  --font-family-base: 'Golos Text', sans-serif;
+  --font-family-heading: 'Merriweather', sans-serif;
+
+  /*GRID*/
+  --gap: 20px;
+  --container-width: 1222px;
+
+  /*COLORS*/
+  --color-red: #F54932;
+  --color-yelow: #FBCE51;
+  --color-blue: #3057A2;
+  --color-dark: #1F1F1F;
+  --color-white: #ffffff;
+  --color-gray: #D0D0D0;
+
+  --color-text: #313131;
+  --color-bg: #E9DED4;
+
+  --border-color: var(--color-gray);
+
+  /*SECTION*/
+  --section-margin: 200px;
+  --hero-height: 700px;
+
+  /*TRANSITION*/
+  --transition-base: all .2s ease-in-out;
+}

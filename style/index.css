@@ -1,0 +1,18 @@
+/*Options*/
+@import "options/_variables.css";
+@import "options/_base.css";
+
+/*Layout*/
+@import "layout/_header.css";
+@import "layout/_footer.css";
+
+/*components*/
+@import "components/btn.css";
+@import "components/carousel.css";
+
+/*Main*/
+@import "section/_hero.css";
+@import "section/_text_line.css";
+@import "section/_infoblock.css";
+@import "section/_stages.css";
+@import "section/_members.css";

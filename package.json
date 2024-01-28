@@ -1,0 +1,20 @@
+{
+  "name": "-four_horse_club",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halloween-px/-four_horse_club.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/halloween-px/-four_horse_club/issues"
+  },
+  "homepage": "https://github.com/halloween-px/-four_horse_club#readme"
+}

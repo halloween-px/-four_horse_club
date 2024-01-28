@@ -1,0 +1,82 @@
+.stages {
+    padding-top: var(--section-margin);
+    overflow: hidden;
+}
+
+.stages-wrapper {
+    position: relative;
+}
+
+.stages-wrapper:after {
+    content: url("/resources/stages/airplane.png");
+    position: absolute;
+    right: -80px;
+    bottom: -30px;
+    z-index: 1;
+}
+
+.stages-title {
+    display: inline-block;
+    max-width: 806px;
+}
+
+.stages-title span{
+    display: inline-block;
+    max-width: 280px;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-transform: initial;
+    color: var(--color-blue);
+}
+
+.stages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 54px;
+}
+
+.stages-item {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    background: url("/resources/stages/stages-bg.jpg") center no-repeat;
+    background-size: cover;
+    display: flex;
+    gap: 16px;
+}
+
+.stages-item:nth-child(3) {
+    grid-column: 3/4;
+    grid-row: 1/3;
+}
+
+.stages-item:nth-child(7) {
+    grid-column: 2/4;
+}
+
+.stages-item:nth-child(7) .stage-text {
+    max-width: 446px;
+}
+
+.stage-count {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    color: var(--color-text);
+    border-radius: 50rem;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.stage-text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text);
+}

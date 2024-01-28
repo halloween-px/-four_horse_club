@@ -1,0 +1,58 @@
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: calc(var(--gap));
+    transition: all .5s ease-in-out;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.carousel-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+}
+
+.carousel-button-prev, .carousel-button-next {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-dark);
+    border-radius: 50rem;
+}
+
+.carousel-button-prev:after {
+    content: url("/resources/icons/chevrone-left.svg");
+    transform: translate(-2px, 1px);
+}
+
+.carousel-button-next:after {
+    content: url("/resources/icons/chevrone-right.svg");
+    transform: translate(2px, 1px);
+}
+
+.carousel-pagination {
+    display: flex;
+}
+
+.carousel-pagination .dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50rem;
+    background-color: var(--color-gray);
+    transition: var(--transition-base);
+}
+
+.carousel-pagination .dot.active {
+    background-color: var(--color-dark);
+}
