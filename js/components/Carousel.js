@@ -51,13 +51,14 @@ class Carousel {
             setTimeout(() => {
                 this.sliderWrpper.style.transition = 'all .5s ease-in-out';
                 this.sliderWrpper.style.transform = `translateX(-${this.transform}px)`;
-            }, 5000)
+            }, 0)
         }
 
         const next = () => {
             const node = this.sliderWrpper.firstElementChild;
             this.sliderWrpper.appendChild(node);
-            addAndRemoveAnimation(this.transform - this.getWidthSlide() + this.params.margin);
+            console.log(this.transform)
+            addAndRemoveAnimation(this.transform - this.getWidthSlide() - this.params.margin);
         }
 
         const prev = () => {
@@ -130,8 +131,8 @@ class Carousel {
     }
 
     goToSlide(index) {
-        this.transform = this.getWidthSlide() * index;
-        this.sliderWrpper.style.transform = `translateX(-${this.transform + (this.params.margin * index)}px)`;
+        this.transform = (this.getWidthSlide() * index) + (this.params.margin * index);
+        this.sliderWrpper.style.transform = `translateX(-${this.transform}px)`;
         this.currentIndex = index;
     }
 }
