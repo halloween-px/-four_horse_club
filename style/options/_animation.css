@@ -1,0 +1,19 @@
+@keyframes rotate_text {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pawn {
+    0% {
+        transform: rotate(0deg) translateY(0px) translateX(113px);
+    }
+
+    50% {
+        transform: rotate(25deg) translateY(-80px) translateX(55.5px);
+    }
+
+    100% {
+        transform: rotate(0deg) translateY(0px) translateX(0);
+    }
+}

@@ -1,5 +1,51 @@
 .text-line {
-    background: url("/resources/text-line-hero.svg") center repeat;
-    background-size: contain;
+    overflow: hidden;
+    background-color: var(--color-red);
+}
+
+@keyframes animation-text {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(var(--ticker-width) * -1px - 9px));
+    }
+}
+
+.text-line-wrapper {
     height: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 30px;
+    animation: animation-text 20s linear infinite;
+}
+
+.text-line-list {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 30px;
+}
+
+.text-line-list .list-item{
+    flex: 0 0 auto;
+    position: relative;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: var(--color-white);
+    font-family: var(--font-family-heading);
+}
+
+.text-line-list .list-item:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -18px;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+
 }

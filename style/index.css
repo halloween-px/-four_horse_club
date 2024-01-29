@@ -1,6 +1,7 @@
 /*Options*/
 @import "options/_variables.css";
 @import "options/_base.css";
+@import "options/_animation.css";
 
 /*Layout*/
 @import "layout/_header.css";

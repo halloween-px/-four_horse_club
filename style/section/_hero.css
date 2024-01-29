@@ -76,6 +76,7 @@
 .hero-image-pawn {
     right: -28px;
     bottom: 19px;
+    animation: pawn 1s linear forwards;
 }
 
 .hero-image-horse {
@@ -86,6 +87,19 @@
 .hero-text-circle {
     top: -45px;
     right: -40px;
+    z-index: -2;
+    animation: rotate_text 50s linear infinite;
+}
+
+.hero-image-chess1 {
+    top: calc(50% - 80px);
+    left: calc(50% + 47px);
+    z-index: -2;
+}
+
+.hero-image-chess2 {
+    top: 165px;
+    right: 86px;
     z-index: -2;
 }
 
