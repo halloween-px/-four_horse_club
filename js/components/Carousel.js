@@ -14,6 +14,7 @@ class Carousel {
             autoplayDelay: this.slider?.getAttribute('data-autoplay-delay') || 4000,
             pagination: this.slider?.getAttribute('data-pagination') || false,
             navigation: this.slider?.getAttribute('data-navigation') || false,
+            group: this.slider?.getAttribute('data-group-items') || false,
             loop: this.slider?.getAttribute('data-loop') || false,
             ...params
         }
@@ -21,17 +22,55 @@ class Carousel {
     }
 
     init() {
+        if(!this.slider) return;
+
         this.setWidthSlide();
         this.btnNextSlide();
         this.btnPrevSlide();
         this.onAutoplay(true);
+        this.createPagination();
         [...this.sliderWrpper.children].forEach((el, index) => {
             el.append(index)
         })
     }
 
     createPagination() {
+        if(!this.params.pagination) return;
+        const pagination = this.slider.querySelector('.carousel-pagination');
+        const param = this.slider?.hasAttribute('data-pagination-number') ? 'number' : 'dot';
+        if(!pagination) return;
 
+        const createNumberPagination = () => {
+            const countStart = this.params.items;
+            const countEnd = this.countSlide;
+            pagination.insertAdjacentHTML(`beforeend`, `
+                <span class="pagination-number-start">${countStart}</span>
+                 / 
+                 <span class="pagination-number-end">${countEnd}</span>
+            `);
+        }
+
+        switch (param) {
+            case 'number':
+                createNumberPagination();
+                break
+        }
+    }
+
+    updatePagination() {
+        const updateNumber = (value) => {
+            const pagination = this.slider.querySelector('.pagination-numbers .pagination-number-start');
+            let number = this.params.group ? this.params.items : 1;
+            let count = value + number;
+
+            if(pagination) {
+                pagination.textContent = count;
+            }
+        }
+
+        return {
+            updateNumber,
+        }
     }
 
     getWidthSlide() {
@@ -50,22 +89,51 @@ class Carousel {
             this.sliderWrpper.style.transform = `translateX(-${width}px)`;
             setTimeout(() => {
                 this.sliderWrpper.style.transition = 'all .5s ease-in-out';
-                this.sliderWrpper.style.transform = `translateX(-${this.transform}px)`;
+                this.goToSlide(this.currentIndex)
             }, 0)
         }
 
         const next = () => {
-            const node = this.sliderWrpper.firstElementChild;
-            this.sliderWrpper.appendChild(node);
-            console.log(this.transform)
-            addAndRemoveAnimation(this.transform - this.getWidthSlide() - this.params.margin);
+            const node = this.params.group ?
+                [...this.sliderWrpper.children].slice(0, [this.params.items]) :
+                this.sliderWrpper.firstElementChild;
+
+            if(!node.length) {
+                this.sliderWrpper.appendChild(node);
+                addAndRemoveAnimation(this.transform - this.getWidthSlide() - this.params.margin);
+                return;
+            }
+
+            node.forEach(el => {
+                this.sliderWrpper.appendChild(el);
+            });
+            addAndRemoveAnimation(
+                this.transform -
+                (this.getWidthSlide() * this.params.items) -
+                (this.params.margin * this.params.items)
+            );
         }
 
         const prev = () => {
-            const node = this.sliderWrpper.lastElementChild;
-            this.sliderWrpper.prepend(node);
+            const node = this.params.group ?
+                [...this.sliderWrpper.children].slice(0, [this.params.items]) :
+                this.sliderWrpper.firstElementChild;
 
-            addAndRemoveAnimation(this.getWidthSlide() + this.params.margin)
+            if(!node.length) {
+                this.sliderWrpper.prepend(node);
+                addAndRemoveAnimation(this.getWidthSlide() + this.params.margin)
+                return;
+            }
+
+            node.forEach(el => {
+                this.sliderWrpper.prepend(el);
+            });
+
+            addAndRemoveAnimation(
+                (this.getWidthSlide() * this.params.items) +
+                (this.params.margin * this.params.items)
+            );
+
         }
 
         return {
@@ -91,8 +159,12 @@ class Carousel {
     }
 
     nextSlide() {
-        if(this.currentIndex < this.params.items) {
-            this.goToSlide(this.currentIndex + 1);
+        if(this.currentIndex < this.countSlide && this.currentIndex < this.params.items) {
+            if(this.params.group) {
+                this.goToSlide(this.currentIndex + this.params.items);
+            } else {
+                this.goToSlide(this.currentIndex + 1);
+            }
         }else if(this.currentIndex >= this.params.items && !this.params.loop) {
             this.goToSlide(0);
         }else if(this.currentIndex >= this.params.items && this.params.loop) {
@@ -102,7 +174,11 @@ class Carousel {
 
     prevSlide() {
         if(this.currentIndex > 0) {
-            this.goToSlide(this.currentIndex - 1);
+            if(this.params.group) {
+                this.goToSlide(this.currentIndex - this.params.items);
+            } else {
+                this.goToSlide(this.currentIndex - 1);
+            }
         } else if(this.currentIndex <= 0 && this.params.loop) {
             this.onLoop().prev();
         }
@@ -134,6 +210,7 @@ class Carousel {
         this.transform = (this.getWidthSlide() * index) + (this.params.margin * index);
         this.sliderWrpper.style.transform = `translateX(-${this.transform}px)`;
         this.currentIndex = index;
+        this.updatePagination().updateNumber(index);
     }
 }
 

@@ -16,6 +16,7 @@
 
 .carousel-buttons {
     display: flex;
+    align-items: center;
     flex-wrap: nowrap;
     gap: 14px;
 }
@@ -55,4 +56,15 @@
 
 .carousel-pagination .dot.active {
     background-color: var(--color-dark);
+}
+
+.carousel-pagination .pagination-numbers {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.carousel-pagination .pagination-numbers span:last-child{
+    opacity: .6;
 }
