@@ -8,7 +8,7 @@
 }
 
 .stages-wrapper:after {
-    content: url("resources/stages/airplane.png");
+    content: url("../../resources/stages/airplane.png");
     position: absolute;
     right: -80px;
     bottom: -30px;
@@ -41,7 +41,7 @@
     padding: 20px;
     position: relative;
     z-index: 1;
-    background: url("resources/stages/stages-bg.jpg") center no-repeat;
+    background: url("../../resources/stages/stages-bg.jpg") center no-repeat;
     background-size: cover;
     display: flex;
     gap: 16px;

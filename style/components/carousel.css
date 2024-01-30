@@ -32,12 +32,12 @@
 }
 
 .carousel-button-prev:after {
-    content: url("resources/icons/chevrone-left.svg");
+    content: url("../../resources/icons/chevrone-left.svg");
     transform: translate(-2px, 1px);
 }
 
 .carousel-button-next:after {
-    content: url("resources/icons/chevrone-right.svg");
+    content: url("../../resources/icons/chevrone-right.svg");
     transform: translate(2px, 1px);
 }
 
