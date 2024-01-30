@@ -1,6 +1,6 @@
 {
-  "name": "-four_horse_club",
-  "version": "1.0.0",
+  "name": "four_horse_club",
+  "version": "1.0.2",
   "description": "",
   "main": "js/app.js",
   "scripts": {
