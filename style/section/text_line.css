@@ -3,23 +3,13 @@
     background-color: var(--color-red);
 }
 
-@keyframes animation-text {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(calc(var(--ticker-width) * -1px - 9px));
-    }
-}
-
 .text-line-wrapper {
     height: 60px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
     gap: 30px;
-    animation: animation-text 20s linear infinite;
+    animation: ticker 20s linear infinite;
 }
 
 .text-line-list {
@@ -47,5 +37,14 @@
     height: 6px;
     background-color: var(--color-white);
     border-radius: 50%;
+}
 
+@media only screen and (max-width: 767px) {
+    .text-line-wrapper {
+        height: 38px;
+    }
+
+    .text-line-list .list-item {
+        font-size: 16px;
+    }
 }

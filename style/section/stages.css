@@ -80,3 +80,14 @@
     line-height: 1.2;
     color: var(--color-text);
 }
+
+@media only screen and (max-width: 767px) {
+    .stages-title {
+        max-width: 100%;
+    }
+
+    .stages-title span{
+        font-size: 18px;
+        margin-top: 12px;
+    }
+}

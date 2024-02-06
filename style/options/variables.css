@@ -27,3 +27,10 @@
   /*TRANSITION*/
   --transition-base: all .2s ease-in-out;
 }
+
+@media only screen and (max-width: 767px) {
+  :root {
+    --hero-height: 774px;
+    --section-margin: 120px;
+  }
+}

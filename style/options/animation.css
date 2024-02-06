@@ -17,3 +17,13 @@
         transform: rotate(0deg) translateY(0px) translateX(0);
     }
 }
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(var(--ticker-width) * -1px - 9px));
+    }
+}
