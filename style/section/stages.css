@@ -10,8 +10,8 @@
 .stages-wrapper:after {
     content: url("../../resources/stages/airplane.png");
     position: absolute;
-    right: -80px;
-    bottom: -30px;
+    right: -63px;
+    bottom: 4px;
     z-index: 1;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .stages-item {
-    padding: 20px;
+    padding: 21px;
     position: relative;
     z-index: 1;
     background: url("../../resources/stages/stages-bg.jpg") center no-repeat;

@@ -94,8 +94,8 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 32px;
-    padding-bottom: 16px;
-    margin-bottom: 16px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
     border-bottom: 2px solid var(--border-color);
 }
 

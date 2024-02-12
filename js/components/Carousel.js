@@ -59,12 +59,12 @@ class Carousel {
 
     updatePagination() {
         const updateNumber = (value) => {
+            let count = value === 0 ? this.params.items : value * (this.countSlide / this.params.items);
             const pagination = this.slider.querySelector('.pagination-numbers .pagination-number-start');
-            let number = this.params.group ? this.params.items : 1;
-            let count = value + number;
+            let number = this.params.group ? count : 1;
 
             if(pagination) {
-                pagination.textContent = count;
+                pagination.textContent = number;
             }
         }
 
@@ -89,13 +89,13 @@ class Carousel {
             this.sliderWrpper.style.transform = `translateX(-${width}px)`;
             setTimeout(() => {
                 this.sliderWrpper.style.transition = 'all .5s ease-in-out';
-                this.goToSlide(this.currentIndex)
+                this.goToSlide(this.currentIndex);
             }, 0)
         }
 
         const next = () => {
             const node = this.params.group ?
-                [...this.sliderWrpper.children].slice(0, [this.params.items]) :
+                [...this.sliderWrpper.children].slice(0, this.params.items) :
                 this.sliderWrpper.firstElementChild;
 
             if(!node.length) {
@@ -107,6 +107,7 @@ class Carousel {
             node.forEach(el => {
                 this.sliderWrpper.appendChild(el);
             });
+
             addAndRemoveAnimation(
                 this.transform -
                 (this.getWidthSlide() * this.params.items) -
@@ -116,7 +117,7 @@ class Carousel {
 
         const prev = () => {
             const node = this.params.group ?
-                [...this.sliderWrpper.children].slice(0, [this.params.items]) :
+                [...this.sliderWrpper.children].slice(this.params.items, this.countSlide).reverse() :
                 this.sliderWrpper.firstElementChild;
 
             if(!node.length) {
@@ -210,6 +211,7 @@ class Carousel {
         this.transform = (this.getWidthSlide() * index) + (this.params.margin * index);
         this.sliderWrpper.style.transform = `translateX(-${this.transform}px)`;
         this.currentIndex = index;
+        console.log(index)
         this.updatePagination().updateNumber(index);
     }
 }
